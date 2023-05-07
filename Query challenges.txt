@@ -1,0 +1,61 @@
+create database testing;
+
+create table Sellers(id int not null auto_increment, name varchar(50) not null,
+rating decimal(2,1) check(rating >0 and rating <=5),constraint pk_Sellers primary key (id));
+
+
+CREATE TABLE items (id INT NOT NULL,name VARCHAR(100) NOT NULL,sellerId INT NOT NULL,
+FOREIGN KEY (sellerId) REFERENCES Sellers(id));
+
+Insert into sellers(id,name,rating) values(1,'bassetti by SCHRÖNO',4),
+(2,'Betty',4),
+(3,'Bobb',3),
+(4,'DeLuca',5),
+(5,'Diva',5),
+(6,'erpo just relax',4),
+(7,'Playboy',5),
+(8,'Gallery M',4),
+(9,'Gray & Jones',3),
+(10,'Himolla',4),
+(11,'Hukla',3),
+(12,'Playboy ',4);
+
+
+Insert into items(id,name,sellerId) values(1,'Corner sofas',6),
+(2,'Sofa',12),
+(3,'Single sofas',10),
+(4,'Leather sofas',9),
+(5,'Residential landscapes',5),
+(6,'2-seater',2),
+(7,'3-seater',2),
+(8,'Big sofas',6),
+(9,'Seating',5),
+(10,'Armchair',8),
+(11,'TV armchair',7),
+(12,'Leather armchair',6),
+(13,'Recliner',5),
+(14,'Swivel chair',1),
+(15,'Wing chair',2),
+(16,'Cocktail chair',3),
+(17,'Armchair bed',2),
+(18,'Lounge Chair',7),
+(19,'Rocking armchair',6),
+(20,'Stool',11),
+(21,'Upholstery accessories',10),
+(22,'Dining',4),
+(23,'Coffee tables',2),
+(24,'Office desks',6),
+(25,'Desks',5),
+(26,'Nightstands',3),
+(27,'Trolleys',10),
+(28,'Bar tables',12),
+(29,'Table tops',12),
+(30,'Console tables',4),
+(31,'Legs',1),
+(32,'Coffee table',2),
+(33,'Tea wagon',12);
+
+
+SELECT a.name AS Item, b.name AS Seller FROM items a
+JOIN sellers b ON a.sellerId = b.id
+WHERE b.rating > 4;
