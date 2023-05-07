@@ -1,33 +1,35 @@
-const BasePage = require('./basePage');
+const BasePage = require("./basePage");
 
 class LoginPage extends BasePage {
   async fillLoginForm(page, userData) {
-    console.log(userData)
-    // Fill the login form fields
-    // Replace the selectors with the actual ones from the website
-    await this.type(page, '#loginEmail', userData.emaillog);
-    await this.type(page, '#loginPassword', userData.passwordlog);
+    console.log(userData);
+    await page.click("span.headerElement__icon.headerElement__icon--login");
+    await this.type(page, "#loginEmail", userData.emaillog);
+    await this.type(page, "#loginPassword", userData.passwordlog);
+    await page.click("#login-submit");
   }
 
-  async submitLoginForm(page) {
-    // Click the login button
-    // Replace the selector with the actual one from the website
-    await page.click('#login-submit');
+  async fillInvLoginForm(page, userData) {
+    console.log(userData);
+    const loggedIn = await page.evaluate(() => {
+      const usernameEl = document.querySelector(
+        ".headerElement__status--login"
+      );
+      const loginEl = document.querySelector(".headerElement__text--hidden");
+      return (usernameEl && usernameEl.innerText !== "") || !loginEl;
+    });
+    // Filling the Login form fields
+    if (loggedIn) {
+      await page.click("span.headerElement__icon.headerElement__icon--login");
+      await page.waitForSelector(".sidebarNavigation__rootChild");
+      await page.click(".sidebarNavigation__rootChild");
+    } else {
+      await page.click("span.headerElement__icon.headerElement__icon--login");
+    }
+    await this.type(page, "#loginEmail", userData.emaillog);
+    await this.type(page, "#loginPassword", userData.invalidPasswordlog);
+    await page.click("#login-submit");
   }
-
-  // async fillInvalidLoginForm(page, userData) {
-  //   console.log(userData)
-  //   // Fill the login form fields
-  //   // Replace the selectors with the actual ones from the website
-  //   await this.type(page, '#loginEmail', userData.emaillog);
-  //   await this.type(page, '#loginPassword', userData.invalidPasswordlog);
-  // }
-
-  // async submitInvalidLoginForm(page) {
-  //   // Click the login button
-  //   // Replace the selector with the actual one from the website
-  //   await page.click('#login-submit');
-  // }
 }
 
 module.exports = LoginPage;

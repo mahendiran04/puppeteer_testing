@@ -1,12 +1,12 @@
 class BasePage {
   async visit(page, url) {
     console.log(url);
-    await page.goto(url, { waitUntil: 'networkidle0' });
+    await page.goto(url, { waitUntil: "networkidle0" });
   }
 
   async click(page, selector) {
     await page.waitForSelector(selector);
-    // console.log("selector found")
+    // console.log("selector found");
     await page.click(selector);
   }
 
