@@ -60,7 +60,7 @@ class ShoppingPage extends BasePage {
     // await page.click('div.headerBrand--default .headerElement__link--wishlist');
 
     await page.goto(process.env.WISHLIST_PAGE);
-    await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 90000 });
+    // await page.waitForNavigation({ waitUntil: "networkidle0", timeout: 90000 });
     await page.waitForSelector("#addAddToWishlist");
     await page.click("#addAddToWishlist");
 
