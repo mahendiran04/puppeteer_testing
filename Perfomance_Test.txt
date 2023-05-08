@@ -1,0 +1,11 @@
+Perfomance test :-
+
+If i were tasked with designing a performance test for this E-commerce website ( https://www.moebel-kraft.de/ ). I just start with Homepage,Productpage & ends with Checkoutpage because of the below reasons:
+
+1. HomePage: The homepage is the first thing visitors see when they arrive on our website. It needs to be visually appealing, engaging, and provide easy navigation. I can test various elements of the homepage such as the login, layout, color scheme, navigation menu, search bar, featured products, etc.
+
+2. ProductPage: The product page is where visitors decide whether to purchase a product or not. It needs to provide detailed information about the products, including high-quality images, product description, offers, pricing, reviews, filters etc. I will test the layout, product images, descriptions, pricing, offers, reviews, and other elements of the product page.
+
+3. CheckoutProcessPage: The checkout process is a crucial part of an e-commerce website as it directly affects the conversion rate. You can test the checkout process by simulating various user scenarios, including adding products to the cart, filling out personal details, selecting payment options, and completing the purchase.
+
+To test these areas, i can use various testing methods such as A/B testing v/s multivariate testing, usability testing, and user testing(end user perspective). I'll use various parameters to measure the success of my tests, including conversion rate, bounce rate, click-through rate, average order value, cart abandonment rate, etc. By testing and optimizing these areas of this e-commerce website, i can improve the user experience and increase conversions.
